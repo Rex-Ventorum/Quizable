@@ -57,6 +57,7 @@ public class QuizService {
     public final void setQuizMessageInputSource(QuizMessageInputSource inputSource) {
         if(inputSource == null) throw new IllegalArgumentException("Input Source May Not Be Null");
         this.inputSource = inputSource;
+        messageService.setMessageInputSource(inputSource);
     }
 
     public final QuizMessageOutputSource getQuizMessageOutputSource() {
@@ -66,6 +67,7 @@ public class QuizService {
     public final void seQuizMessageOutputSource(QuizMessageOutputSource outputSource) {
         if(outputSource == null) throw new IllegalArgumentException("Output Source May Not Be Null");
         this.outputSource = outputSource;
+        messageService.setMessageOutputSource(outputSource);
     }
 
     public final Quiz getQuiz() {
