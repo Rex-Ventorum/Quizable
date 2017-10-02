@@ -11,7 +11,9 @@ package quizable;
  */
 public class StartUp {
     public static void main(String[] args) {
-        Quiz quiz = new DIPQuiz();
+        Quiz dipQuiz = new DIPQuiz();
+        Quiz ooadQuiz = new OOADQuiz();
+        Quiz quiz = new MultiQuiz(dipQuiz,ooadQuiz);
         QuizService quizMe = new QuizService(quiz);
         quizMe.startQuiz();
     }
