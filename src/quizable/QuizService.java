@@ -14,10 +14,37 @@ public class QuizService {
         messageService = new MessagingService(inputSource,outputSource);
     }
 
-    
-    
     public final void startQuiz(){
-        
+        int count = -1;
+        int correctAnswers = 0;
+        while (quiz.hasNextQuestion()){
+            //Ask Quiz Question
+            inputSource.setQuizQuestion(quiz.getNextQuestion());
+            String answer = messageService.receiveMessageFromSource();
+            
+            //Null Answer == End Quiz Eairly
+            if (answer == null) {break;}
+            
+            //Check Answer
+            if(quiz.checkAnswer(answer)){
+                //True
+                correctAnswers++;
+                outputSource.setAnswerWasCorrect(true);
+                messageService.sendMessageToSource("Correct!");
+            }else{
+                //False
+                String wrongMsg = "Wrong! Should Be: \n" + quiz.getCurrentAnswer();
+                outputSource.setAnswerWasCorrect(false);
+                messageService.sendMessageToSource(wrongMsg);
+            }
+        }//end of Quiz While Loop
+        double c = (double) correctAnswers;
+        double t = (double) quiz.getQuestionCount();
+        double score = (c / t) * 100;
+
+        String finalMessage = "You got " + correctAnswers + " out of " + quiz.getQuestionCount() + " (%" + score + ")";
+        outputSource.setAnswerWasCorrect(score >= 50);
+        messageService.sendMessageToSource(finalMessage);
     }
     
     //--------------------------//
