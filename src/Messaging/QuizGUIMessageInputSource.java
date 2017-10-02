@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
  *
  * @author Brandon
  */
-public class QuizGUIMessageInputSource implements MessageInputSource{
+public class QuizGUIMessageInputSource implements QuizMessageInputSource{
     private static final String DEFAULT_QUESTION = "<No Question>";
     private String quizQuestion;
     
@@ -19,11 +19,13 @@ public class QuizGUIMessageInputSource implements MessageInputSource{
         return JOptionPane.showInputDialog(quizQuestion);
     }
    
-    public final void setQuestQuestion(String question){
+    @Override
+    public final void setQuizQuestion(String question){
         if(question == null) throw new IllegalArgumentException("Question May Not Be Null");
         quizQuestion = question;
     }
     
+    @Override
     public final String getQuizQuestion(){
         return quizQuestion;
     }

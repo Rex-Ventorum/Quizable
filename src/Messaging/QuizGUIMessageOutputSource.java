@@ -3,12 +3,14 @@ package Messaging;
 
 import javax.swing.JOptionPane;
 
-public class QuizGUIMessageOutputSource implements MessageOutputSource{
+public class QuizGUIMessageOutputSource implements QuizMessageOutputSource{
 
+    private static final int CORRECT_MESSAGE_TYPE = JOptionPane.PLAIN_MESSAGE;
+    private static final int INCORRECT_MESSAGE_TYPE = JOptionPane.ERROR_MESSAGE;
     private int messageType;
     
     public QuizGUIMessageOutputSource(){
-        messageType = JOptionPane.PLAIN_MESSAGE;
+        messageType = CORRECT_MESSAGE_TYPE;
     }
     
     @Override
@@ -16,10 +18,10 @@ public class QuizGUIMessageOutputSource implements MessageOutputSource{
         JOptionPane.showMessageDialog(null, message, "", messageType);
     }
     
-    public void setJOptionMessageType(int messageType){
-        if(messageType != JOptionPane.ERROR_MESSAGE || messageType != JOptionPane.PLAIN_MESSAGE)
-            throw new IllegalArgumentException("Message Type Must Be JOptionPane.ERROR_MESSAGE or JOptionPane.PLAIN_MESSAGE");
-        this.messageType = messageType;
+    @Override
+    public final void setAnswerWasCorrect(boolean wasCorrect){
+        if(wasCorrect) messageType = CORRECT_MESSAGE_TYPE;
+        else messageType = INCORRECT_MESSAGE_TYPE;
     }
    
 }
