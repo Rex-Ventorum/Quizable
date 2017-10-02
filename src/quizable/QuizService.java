@@ -15,7 +15,6 @@ public class QuizService {
     }
 
     public final void startQuiz(){
-        int count = -1;
         int correctAnswers = 0;
         while (quiz.hasNextQuestion()){
             //Ask Quiz Question
