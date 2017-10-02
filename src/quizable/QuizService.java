@@ -5,11 +5,9 @@ public class QuizService {
     private MessagingService messageService;
     private Quiz quiz;
     
-    public QuizService(Quiz quiz){
+    public QuizService(Quiz quiz, MessagingService messageService){
         setQuiz(quiz);
-        MessageInputSource inputSource = null;
-        MessageOutputSource outputSource = null;
-        messageService = new MessagingService(inputSource,outputSource);
+        setMessagingService(messageService);
     }
     
     
