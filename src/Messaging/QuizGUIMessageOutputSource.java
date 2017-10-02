@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 
 public class QuizGUIMessageOutputSource implements QuizMessageOutputSource{
 
-    private static final int CORRECT_MESSAGE_TYPE = JOptionPane.PLAIN_MESSAGE;
+    private static final int CORRECT_MESSAGE_TYPE = JOptionPane.INFORMATION_MESSAGE;
     private static final int INCORRECT_MESSAGE_TYPE = JOptionPane.ERROR_MESSAGE;
     private int messageType;
     
