@@ -14,7 +14,7 @@ import org.apache.commons.lang3.StringUtils;
  * @author Brandon
  */
 public class DIPQuiz implements Quiz{
-private int[] questionOrder;
+    private int[] questionOrder;
     private int index = -1;
     
     private static final String[] QUESTIONS = {
@@ -26,12 +26,12 @@ private int[] questionOrder;
     
     private static final String[] ANSWERS = {
         "High level moduels should not depend on low level moduels",
-        "Abstractions should not depend on details details",
+        "Abstractions should not depend on details",
         "Dependency Inversion Principle",
         "Interfaces"        
     };
     
-    public OOADQuiz(){
+    public DIPQuiz(){
         questionOrder = new int[QUESTIONS.length];
         Random random = new Random();
         LinkedList<Integer> numList = new LinkedList<>();
